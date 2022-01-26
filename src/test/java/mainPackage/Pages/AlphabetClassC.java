@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlphabetClassC extends BasePage{
+    //I locate elements at a certain page and use  PageFactory Init elements with the help of inheritance(OOP)
+    //I have different pages for different parts in application so that I have organized code
     @FindBy(xpath = "(//span[@class='VfPpkd-vQzf8d'])[6]")
     private WebElement Sep2021;
 
@@ -36,6 +38,7 @@ public class AlphabetClassC extends BasePage{
 
     public WebElement getCostOfRevenue() {
         return costOfRevenue;
+//        this will give only the cost of revenue rather that going through the whole data
     }
 
     public WebElement getSep2021() {
@@ -66,6 +69,6 @@ public class AlphabetClassC extends BasePage{
         }
 
         return classes;
-
-    }
+// I created this method to loop through whole table data and derive the info that I want to use or assert
+}
 }

@@ -10,10 +10,11 @@ import org.openqa.selenium.TakesScreenshot;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
-    @Before
+    @Before//I use before and after annotations in my hooks class
+           // for actions that I want to repeat at each test
     public void setup(){
         Driver.getDriver().manage().window().maximize();
-//        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
 
     }
 
@@ -25,5 +26,7 @@ public class Hooks {
 
         }
         Driver.closeDriver();
+
+        //it will provide a screenshot of failed part
     }
 }

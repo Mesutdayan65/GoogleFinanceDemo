@@ -1,7 +1,6 @@
 package mainPackage.StepsDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import mainPackage.Pages.AlphabetClassC;
 import mainPackage.Pages.GoogleFinance;
 import mainPackage.Pages.GoogleSearch;
@@ -10,8 +9,6 @@ import mainPackage.Utils.configReader;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.sql.DriverManager;
 import java.util.concurrent.TimeUnit;
 
 public class StepsDefinition {
@@ -19,13 +16,18 @@ public class StepsDefinition {
     GoogleSearch googleSearch= new GoogleSearch();
     GoogleFinance googleFinance=new GoogleFinance();
     AlphabetClassC alphabetClassC=new AlphabetClassC();
+    //I create the object from Pages (POM)
 
     @Given("the user wants to navigate to google finance")
     public void the_user_wants_to_navigate_to_google_finance() throws InterruptedException {
         Driver.getDriver().get(configReader.getProperty("url"));
+        //I use property file for easy configurations later on.
         googleSearch.getSearchButton().sendKeys("google finance");
-        Driver.getDriver().manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
-        googleSearch.getClickButton().click();
+//         Driver.getDriver().manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+//         As per the official selenium documentation it is suggested not to mix
+//         both implicit wait and explicit waits. Mixing both wait types might cause unpredictable wait times
+//         so I used only explicit  waits in framework wherever it is needed in code.
+         googleSearch.getClickButton().click();
 
         googleSearch.getFinanceLink().click();
 
@@ -39,6 +41,7 @@ public class StepsDefinition {
 
         googleFinance.getStockSearch().sendKeys("google");
         googleFinance.getAlphabetC().click();
+        //I call my methods from POM and do necessary actions.
 
 
     }
@@ -46,12 +49,14 @@ public class StepsDefinition {
     public void the_user_wants_to_get_the_data_for_sep2021() throws InterruptedException {
         String titleVerify=Driver.getDriver().getTitle();
         System.out.println("titleVerify = " + titleVerify);
+        //I did title verification to make sure that I am at correct page
         wait.until(ExpectedConditions.visibilityOf(alphabetClassC.getDec2021()));
         alphabetClassC.getSep2021().click();
         alphabetClassC.getQuarterly().click();
 
         System.out.println("September 2021 " + alphabetClassC.getFinanceTable());
         Assert.assertTrue(alphabetClassC.getFinanceTable().toString().contains("65.12B"));
+        // I checked certain information from data table and made assertion,
 
     }
     @Then("the user wants to get the data for june2021")
