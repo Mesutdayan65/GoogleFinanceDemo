@@ -23,7 +23,7 @@ public class StepsDefinition {
         Driver.getDriver().get(configReader.getProperty("url"));
         //I use property file for easy configurations later on
         googleSearch.getSearchButton().sendKeys("google finance");
-//         Driver.getDriver().manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+      wait.until(ExpectedConditions.visibilityOf(googleSearch.getClickButton()));
 //         As per the official Selenium documentation it is suggested not to mix
 //         both implicit wait and explicit waits. Mixing both wait types might cause unpredictable wait times.
 //         So, I used only explicit  waits in framework wherever it is needed in code.
@@ -40,6 +40,7 @@ public class StepsDefinition {
     public void the_user_wants_to_get_the_page_for_google_s_shares_on_stock_market() {
 
         googleFinance.getStockSearch().sendKeys("google");
+        wait.until(ExpectedConditions.visibilityOf(googleFinance.getAlphabetC()));
         googleFinance.getAlphabetC().click();
         //I call my methods from POM and do necessary actions
 
