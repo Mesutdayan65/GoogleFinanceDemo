@@ -38,7 +38,7 @@ public class AlphabetClassC extends BasePage{
 
     public WebElement getCostOfRevenue() {
         return costOfRevenue;
-//        this will give only the cost of revenue rather that going through the whole data
+//        this will give only the cost of revenue rather that going through the whole data.
     }
 
     public WebElement getSep2021() {
@@ -69,6 +69,6 @@ public class AlphabetClassC extends BasePage{
         }
 
         return classes;
-// I created this method to loop through whole table data and derive the info that I want to use or assert
+//  I created this method to loop through whole table data and derive the info that I want to use or assert.
 }
 }
