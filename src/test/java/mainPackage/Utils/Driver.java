@@ -6,12 +6,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.sql.Driver;
-
-public class Drivers {private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+public class Driver {
+    private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
     //Singlton Drive
 
-    private Drivers(){
+    private Driver(){
 
     }
 
@@ -19,7 +18,7 @@ public class Drivers {private static ThreadLocal<WebDriver> driverPool = new Thr
 
         if(driverPool.get() == null) {
 
-            synchronized (Driver.class) {
+            synchronized (java.sql.Driver.class) {
                 switch (configReader.getProperty("browser")) {
 
                     case "chrome":
@@ -57,6 +56,4 @@ public class Drivers {private static ThreadLocal<WebDriver> driverPool = new Thr
             driverPool.remove();
         }
     }
-
-
 }

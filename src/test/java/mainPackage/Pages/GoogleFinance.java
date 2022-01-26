@@ -3,22 +3,18 @@ package mainPackage.Pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.nio.ByteBuffer;
-
 public class GoogleFinance extends BasePage{
+@FindBy(xpath = "(//input[@type='text'])[2]")
+    private WebElement stockSearch;
 
-@FindBy(xpath =  " //input[@class='gLFyf gsfi']")
-private WebElement sarchButton;
+@FindBy(xpath = "(//div[@class='onRPD'])[1]")
+    private WebElement AlphabetC;
 
-@FindBy(xpath = " //input[@class='gNO89b']")
-WebElement clickButton;
-
-
-    public WebElement getSearchButton() {
-        return sarchButton;
+    public WebElement getStockSearch() {
+        return stockSearch;
     }
 
-    public WebElement getClickButton() {
-        return clickButton;
+    public WebElement getAlphabetC() {
+        return AlphabetC;
     }
 }

@@ -8,3 +8,4 @@ Feature: Go to google Finance and derive data for certain dates
     And the user wants to get the data for mar2021
     And the user wants to get the data for dec2021
     And the user wants to get the data for sep2020
+    And the user wants to verify that Cost of Revenue for Sep2020 equals "21.12B"
